@@ -143,6 +143,19 @@ h4 {
   background: #FFFFFF1A;
   color: #fff;
   border-radius: calc(var(--base-size) * 1.2);
+
+  &.active {
+    .accordion-header {
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+
+    .accordion-content {
+      max-height: 200px;
+      padding: calc(var(--base-size) * 1.3) calc(var(--base-size) * 2.4);
+    }
+  }
 }
 
 .accordion-header {
@@ -175,6 +188,7 @@ h4 {
     right: calc(var(--base-size) * 2.4);
     top: 50%;
     transform: translateY(-50%);
+    transition: .3s transform;
   }
 }
 
@@ -188,11 +202,6 @@ h4 {
   transition: max-height 0.3s ease, padding 0.3s ease;
   font-size: calc(var(--base-size) * 1.4);
   line-height: 1.28;
-}
-
-.accordion-item.active .accordion-content {
-  max-height: 200px;
-  padding: calc(var(--base-size) * 1.3) calc(var(--base-size) * 2.4);
 }
 
 .order-modal {
