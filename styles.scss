@@ -168,7 +168,7 @@ h4 {
     position: absolute;
     width: calc(var(--base-size) * 1.8);
     height: calc(var(--base-size) * 1.8);
-    background-image: url('./icons/arrow-down.svg');
+    background-image: url('../icons/arrow-down.svg');
     background-size: calc(var(--base-size) * 1.8) auto;
     background-position: center center;
     background-repeat: no-repeat;
@@ -367,7 +367,7 @@ h4 {
       ul {
         li {
           &::before {
-            background-image: url('/icons/check.svg');
+            background-image: url('./icons/check.svg');
             width: calc(var(--base-size) * 1.4);
             height: calc(var(--base-size) * 1.4);
             left: calc(var(--base-size) * (-2.5));
@@ -379,7 +379,7 @@ h4 {
     &__dot {
       li {
         &::before {
-          background-image: url('/icons/dot.svg');
+          background-image: url('./icons/dot.svg');
           width: calc(var(--base-size) * 0.8);
           height: calc(var(--base-size) * 0.8);
           left: calc(var(--base-size) * (-2.1));
@@ -731,7 +731,7 @@ section.course-programm {
             left: 0;
             width: calc(var(--base-size) * 1.8);
             height: calc(var(--base-size) * 1.8);
-            background-image: url('./icons/check.svg');
+            background-image: url('../icons/check.svg');
             background-size: calc(var(--base-size) * 1.8) auto;
             background-position: center center;
             background-repeat: no-repeat;
