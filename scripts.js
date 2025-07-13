@@ -116,3 +116,89 @@ const swiper2 = new Swiper('.swiper.swiper-2', {
   longSwipesRatio: 0.5,
   longSwipesMs: 300,
 });
+
+// Language switch
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((acc, part) => acc?.[part], obj);
+}
+
+const availableLangs = [
+  { code: 'en', name: 'EN', label: 'English', icons: './icons/en.svg' },
+  { code: 'ru', name: 'RU', label: 'Русский', icons: './icons/ru.svg' },
+];
+
+function getLang(langCode) {
+  return availableLangs.find(l => l.code === langCode);
+}
+
+function getLangFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get('lang') || 'ru';
+}
+
+function updateURLLang(lang) {
+  const url = new URL(window.location);
+  url.searchParams.set('lang', lang);
+  history.replaceState(null, '', url.toString());
+}
+
+async function loadLanguage(lang) {
+  try {
+    const res = await fetch(`/lang/${lang}.json`);
+    const translations = await res.json();
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const text = getNestedValue(translations, key);
+      if (text) {
+        el.innerText = text;
+      }
+    });
+
+    updateLangSwitcher(lang);
+    updateURLLang(lang);
+  } catch (e) {
+    console.error(`Translation load error for ${lang}:`, e);
+  }
+}
+
+function updateLangSwitcher(currentLang) {
+  const switcher = document.querySelector('.lang-switcher');
+  const selected = switcher.querySelector('.selected');
+  const optionsList = switcher.querySelector('.lang-options');
+  optionsList.innerHTML = '';
+
+  const current = getLang(currentLang);
+  const alt = availableLangs.find(l => l.code !== currentLang);
+
+  selected.querySelector('img').src = current.icons;
+  selected.querySelector('span').textContent = current.name;
+
+  const li = document.createElement('li');
+  li.setAttribute('data-lang', alt.code);
+  li.innerHTML = `<img src="${alt.icons}" alt="${alt.name}" /><span>${alt.name}</span>`;
+  optionsList.appendChild(li);
+
+  li.addEventListener('click', () => {
+    loadLanguage(alt.code);
+    document.querySelector('.lang-switcher').classList.remove('open');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const currentLang = getLangFromURL();
+  loadLanguage(currentLang);
+
+  const switcher = document.querySelector('.lang-switcher');
+  const selected = switcher.querySelector('.selected');
+
+  selected.addEventListener('click', () => {
+    switcher.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!switcher.contains(e.target)) {
+      switcher.classList.remove('open');
+    }
+  });
+});
