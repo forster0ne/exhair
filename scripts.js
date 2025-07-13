@@ -144,7 +144,7 @@ function updateURLLang(lang) {
 
 async function loadLanguage(lang) {
   try {
-    const res = await fetch(`/lang/${lang}.json`);
+    const res = await fetch(`./lang/${lang}.json`);
     const translations = await res.json();
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
