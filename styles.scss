@@ -87,7 +87,8 @@ h4 {
 }
 
 .swiper-horizontal {
-  border-radius: calc(var(--base-size)*1.2);
+  border-radius: calc(var(--base-size)*1.2) 0 0 calc(var(--base-size)*1.2);
+  overflow: visible;
 }
 
 .container {
@@ -806,7 +807,7 @@ section.learning-rate {
     border-radius: calc(var(--base-size) * 1.2);
     background: #FFFFFF1A;
     backdrop-filter: blur(15px);
-    z-index: 2;
+    z-index: 3;
     > p {
       margin: 0;
     }
@@ -1054,7 +1055,7 @@ section.questions {
         position: absolute;
         width: calc(var(--base-size) * 20.4);
         right: calc(var(--base-size) * (-3.2));
-        bottom: calc(var(--base-size) * (22.8));
+        bottom: calc(var(--base-size) * (22.4));
         z-index: 2;
       }
       .img-4 {
@@ -1062,7 +1063,7 @@ section.questions {
         width: calc(var(--base-size) * 18.2);
         top: calc(var(--base-size) * (-10.3));
         z-index: 1;
-        right: 0;
+        right: calc(var(--base-size) * (-3.2));
       }
       .img-5 {
         display: block;

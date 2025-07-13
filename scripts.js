@@ -17,38 +17,38 @@ function initSliderPadding(sliderSelector, containerSelector) {
 initSliderPadding('#slider-course-programm', 'section.course-programm > .container');
 initSliderPadding('#reviews-slider', 'section.reviews > .container');
 
-document.addEventListener('DOMContentLoaded', function () {
-  const modal = document.querySelector('.order-modal');
-  const closeModalBtn = document.getElementById('close-modal');
-  const tarifNameEl = modal.querySelector('.tarif-name');
-  const descriptionTextEl = modal.querySelector('.description-text');
-  const priceEl = modal.querySelector('.price');
+// document.addEventListener('DOMContentLoaded', function () {
+//   const modal = document.querySelector('.order-modal');
+//   const closeModalBtn = document.getElementById('close-modal');
+//   const tarifNameEl = modal.querySelector('.tarif-name');
+//   const descriptionTextEl = modal.querySelector('.description-text');
+//   const priceEl = modal.querySelector('.price');
 
-  function openModal(tariffName, price) {
-    tarifNameEl.textContent = `Тариф «${tariffName}»`;
-    descriptionTextEl.textContent = `Курс Топ Мастер по наращиванию волос - тариф “${tariffName}” - на русском языке`;
-    priceEl.textContent = price;
-    modal.classList.add('show');
-  }
+//   function openModal(tariffName, price) {
+//     tarifNameEl.textContent = `Тариф «${tariffName}»`;
+//     descriptionTextEl.textContent = `Курс Топ Мастер по наращиванию волос - тариф “${tariffName}” - на русском языке`;
+//     priceEl.textContent = price;
+//     modal.classList.add('show');
+//   }
 
-  closeModalBtn.addEventListener('click', function () {
-    modal.classList.remove('show');
-  });
+//   closeModalBtn.addEventListener('click', function () {
+//     modal.classList.remove('show');
+//   });
 
-  document.querySelectorAll('.white-card .button').forEach(button => {
-    button.addEventListener('click', function (e) {
-      e.preventDefault();
+//   document.querySelectorAll('.white-card .button').forEach(button => {
+//     button.addEventListener('click', function (e) {
+//       e.preventDefault();
 
-      const card = this.closest('.white-card');
-      if (!card) return;
+//       const card = this.closest('.white-card');
+//       if (!card) return;
 
-      const title = card.querySelector('.text-section-title').textContent.trim();
-      const price = card.querySelector('.price .text-section-title.text-accent')?.textContent.trim();
+//       const title = card.querySelector('.text-section-title').textContent.trim();
+//       const price = card.querySelector('.price .text-section-title.text-accent')?.textContent.trim();
 
-      openModal(title, price);
-    });
-  });
-});
+//       openModal(title, price);
+//     });
+//   });
+// });
 
 document.querySelectorAll('.accordion-header').forEach(header => {
   header.addEventListener('click', () => {
@@ -64,19 +64,22 @@ document.querySelectorAll('.accordion-header').forEach(header => {
 });
 
 const swiper1 = new Swiper('.swiper.swiper-1', {
-  slidesPerView: 1,
-  spaceBetween: 0,
+  slidesPerView: 1.2,
+  spaceBetween: 50,
   breakpoints: {
-    394: {
+    // 0: {
+    //   slidesPerView: 1.2,
+    // },
+    460: {
       slidesPerView: 'auto',
       spaceBetween: 0,
     }
   },
-  loop: true,
-    autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
+  // loop: true,
+  //   autoplay: {
+  //   delay: 5000,
+  //   disableOnInteraction: false,
+  // },
   grabCursor: true,
   speed: 1600,
   effect: 'slide',
@@ -91,16 +94,19 @@ const swiper2 = new Swiper('.swiper.swiper-2', {
   slidesPerView: 1.2,
   spaceBetween: 50,
   breakpoints: {
-    394: {
+    // 0: {
+    //   slidesPerView: 1.2,
+    // },
+    460: {
       slidesPerView: 'auto',
       spaceBetween: 0,
     }
   },
-  loop: true,
-    autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
+  // loop: true,
+  //   autoplay: {
+  //   delay: 5000,
+  //   disableOnInteraction: false,
+  // },
   grabCursor: true,
   speed: 1600,
   effect: 'slide',
